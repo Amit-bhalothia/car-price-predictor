@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Companies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Banner with Navigation -->
+    <header class="banner">
+        <div class="banner-content">
+            <h1>Car Companies</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/car-companies">Car Companies</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Container for Car Companies -->
+    <div class="car-companies-section">
+        <!-- Grid Container for Car Logos -->
+        <div class="logo-class-grid">
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Toyota" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/toyota.png') }}" alt="Toyota Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Ford_Motor_Company" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/ford.png') }}" alt="Ford Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Mercedes-Benz" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/mercedes.png') }}" alt="Mercedes Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/BMW" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/bmw.png') }}" alt="BMW Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Audi" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/audi.png') }}" alt="Audi Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Hyundai" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/Hyundai.png') }}" alt="Hyundai Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Skoda" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/Skoda.png') }}" alt="Skoda Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Vauxhall" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/Vauxhall.png') }}" alt="Vauxhall Logo">
+                </a>
+            </div>
+            <div class="logo-class">
+                <a href="https://en.wikipedia.org/wiki/Vauxhall" target="_blank">
+                    <img src="{{ url_for('static', filename='logos/Volkswagen.png') }}" alt="Volkswagen Logo">
+                </a>
+            </div>
+            <!-- Add more logos as needed to reach 16 for a full grid -->
+        </div>
+    </div>
+
+</body>
+</html>

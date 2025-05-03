@@ -1,0 +1,205 @@
+/* General styles for better spacing and layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #332;
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', Serif;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 19px;
+}
+
+/* Banner Section */
+.banner {
+    background-color: #00FFFF;
+    font-size: 33px;
+    color: #2F4F4F;
+    padding: 2px 0;
+    text-align: center;
+}
+
+.navbar.below {
+    margin-top: 0px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 2px;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    color: #2F4F4F;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Prediction Section with different background */
+.prediction-part {
+    background-color: #ffffff;
+    padding: 29px 14px;
+    margin: 18px 0;
+    border-radius: 11px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-part h2 {
+    font-size: 35px;
+    color: #332;
+}
+
+/* Form Styling */
+form {
+    border: 1px solid #ddd;
+    padding: 21px;
+    border-radius: 11px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.1);
+}
+
+.form-part {
+    margin-bottom: 15px;
+}
+
+.form-part label {
+    font-size: 17px;
+    color: #555;
+}
+
+.form-part input,
+.form-part select {
+    width: 100%;
+    padding: 10px;
+    border: 0.5px solid #ddd;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-part input:focus,
+.form-part select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 11px rgba(74, 144, 226, 0.2);
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #356abd;
+}
+
+/* Prediction Result Styling */
+.prediction-result {
+    margin-top: 29px;
+    padding: 21px;
+    background-color: #f0f8ff;
+    border: 2px solid #ddd;
+    border-radius: 11px;
+}
+
+/* Smooth Dropdown Styling */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f9f9f9;
+    padding-right: 20px;
+}
+
+select:hover,
+select:focus {
+    border-color: #4a90e2;
+}
+
+
+/* Container for car companies section */
+.car-companies-section {
+    padding: 20px;
+}
+
+/* Grid layout for car logos */
+.logo-class-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Styling for each car logo */
+.logo-class img {
+    width: 200px; /* Uniform size */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* On hover, logos will scale up slightly */
+.logo-class img:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure logos are centered and aligned */
+.logo-class {
+    text-align: center;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 11px;
+    background-color: #fff;
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.logo-class:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1200px) {
+    .logo-class-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .logo-class-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .logo-class-grid {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+}
+
+.decision-tree-section {
+    margin-top: 21px;
+}

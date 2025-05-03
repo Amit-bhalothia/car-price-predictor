@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+
+    <!-- Link to external stylesheet located in the 'static' folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- The top Banner part -->
+    <header class="banner">
+        <div class="banner-content">
+            <h1>Car Price Prediction</h1>
+            <nav class="navbar below">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/car-companies">Car Companies</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- the prediction section part -->
+    <div class="prediction-part">
+        <div class="container">
+            <h2>Predict Car Price</h2>
+            <form id="carForm" action="/predict" method="POST">
+                <div class="form-part">
+                    <label for="Company">Select Car Company:</label>
+                    <select id="Company" name="Company" onchange="updateModels()" required>
+                        <option value="">Select Company</option>
+                        {% for company in companies %}
+                            <option value="{{ company }}">{{ company }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-part">
+                    <label for="Model">Select Car Model:</label>
+                    <select id="Model" name="Model" required>
+                        <option value="">Select Model</option>
+                    </select>
+                </div>
+
+                <div class="form-part">
+                    <label for="Year">Year:</label>
+                    <input type="number" id="Year" name="Year" required>
+                </div>
+
+                <div class="form-part">
+                    <label for="kms_driven">Kms Driven:</label>
+                    <input type="number" id="kms_driven" name="kms_driven" required>
+                </div>
+
+                <div class="form-part">
+                    <label for="fuel_type">Fuel Type:</label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+
+                <div class="form-part">
+                    <label for="transmission">Transmission:</label>
+                    <select id="transmission" name="transmission" required>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            <!-- Results Section for the Predicted Price and Evaluation Metrics -->
+            <div class="prediction-result">
+                <h3 id="result"></h3>
+                <h4>Model Performance Metrics</h4>
+                <p><strong>R² Score:</strong> <span id="r2_score"></span></p>
+                <p><strong>Mean Absolute Error (MAE):</strong> <span id="mae"></span></p>
+                <p><strong>Mean Squared Error (MSE):</strong> <span id="mse"></span></p>
+            </div>
+
+            <!-- Decision Tree Visualization -->
+            <div class="decision-tree-section">
+                <h3>Random Forest Decision Tree</h3>
+                <img src="{{ url_for('static', filename='decision_tree.png') }}" alt="Random Forest Decision Tree" style="max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to update car models based on the selected company
+        function updateModels() {
+            var company = $('#Company').val();
+
+            // Make AJAX request to fetch models for the selected company
+            $.ajax({
+                type: 'POST',
+                url: '/get_models',
+                data: { company: company },
+                success: function(response) {
+                    $('#Model').empty();
+                    $('#Model').append('<option value="">Select Model</option>');
+                    response.forEach(function(model) {
+                        $('#Model').append('<option value="' + model + '">' + model + '</option>');
+                    });
+                }
+            });
+        }
+
+        // Handle form submission and display prediction result and metrics
+        $('#carForm').submit(function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/predict',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#result').text("Predicted Price: " + response.price);
+                    $('#r2_score').text(response.r2);
+                    $('#mae').text(response.mae);
+                    $('#mse').text(response.mse);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
